@@ -10,6 +10,11 @@ class PictureModel extends Model
     public $timestamps=true;
     protected $fillable=[
         'adverts_id',
-        'picture'
+        'pictures'
     ];
+    public function Adverts(){
+        return $this->hasMany(AdvertModel::class,'id','adverts_id');
+    }
+
 }
+
