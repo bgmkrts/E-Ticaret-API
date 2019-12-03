@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePicturesTable extends Migration
+class CreateForgotPasswordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePicturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pictures', function (Blueprint $table) {
+        Schema::create('forgot_passwords', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('advert_id');
-            $table->text('pictures');
+            $table->string('email');
+            $table->string('code');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePicturesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pictures');
+        Schema::dropIfExists('forgot_passwords');
     }
 }

@@ -16,10 +16,10 @@ class CreateFurnitureAdvertsTable extends Migration
         Schema::create('furniture_adverts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('cities_id');
-            $table->string('furnitureName');
-            $table->integer('advert_id');
-            $table->integer('statu_id');
-            $table->integer('wage_id');
+            $table->string('furniture_name');
+            $table->integer('adverts_id');
+            $table->integer('status_id');
+            $table->integer('wages_id');
             $table->integer('users_id');
             $table->timestamps();
         });

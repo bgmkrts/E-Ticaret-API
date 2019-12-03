@@ -16,11 +16,11 @@ class CreateHomeAdvertsTable extends Migration
         Schema::create('home_adverts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('cities_id');
-            $table->integer('statu_id');
+            $table->integer('status_id');
             $table->string('explanation');
-            $table->integer('wage_id');
+            $table->integer('wages_id');
             $table->integer('users_id');
-            $table->integer('advert_id');
+            $table->integer('adverts_id');
             $table->timestamps();
         });
     }
