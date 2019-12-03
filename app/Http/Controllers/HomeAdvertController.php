@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\FurnitureAdvertModel;
 use App\Models\HomeAdvertModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class HomeAdvertController extends Controller
 {
@@ -80,7 +80,7 @@ class HomeAdvertController extends Controller
                 'errors' => $errors,
             ]);
         }
-        $home_adverts = FurnitureAdvertModel::find($request->id);
+        $home_adverts = homeAdvertController::find($request->id);
         $home_adverts->id=$request->id;
         $home_adverts->cities_id=$request->cities_id;
         $home_adverts->furniture_name=$request->explanation;
