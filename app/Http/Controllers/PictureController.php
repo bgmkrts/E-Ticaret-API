@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\PictureModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -40,13 +39,13 @@ class PictureController extends Controller
 
         if ($request->hasFile('pictures')) {
             $file = $request->file('pictures');
-            $file->move(public_path() . '/images/pictures', $file->getClientOriginalName());
+            $file->move(public_path() . '/pictures/pictures', $file->getClientOriginalName());
             $pictures->pictures = $file->getClientOriginalName();
         }
-
         $pictures->save();
         return Response::json([
             'message'=>'pictures created'
             ]);
     }
 }
+
