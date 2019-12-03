@@ -55,4 +55,5 @@ Route::prefix('furnitureAdvert')->group(function(){
     Route::post('create','furnitureAdvertController@create');
     Route::get('index','furnitureAdvertController@index');
     Route::post('update','furnitureAdvertController@update');
+
 });

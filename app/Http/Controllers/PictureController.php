@@ -37,6 +37,13 @@ class PictureController extends Controller
         $pictures=new PictureModel();
         $pictures->adverts_id=$request->adverts_id;
         $pictures->pictures=$request->pictures;
+
+        if ($request->hasFile('pictures')) {
+            $file = $request->file('pictures');
+            $file->move(public_path() . '/images/pictures', $file->getClientOriginalName());
+            $pictures->pictures = $file->getClientOriginalName();
+        }
+
         $pictures->save();
         return Response::json([
             'message'=>'pictures created'
