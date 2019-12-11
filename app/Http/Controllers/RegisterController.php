@@ -19,10 +19,13 @@ class RegisterController extends Controller
         $validator = Validator::make($request->all(), [
             'name'=>'required',
             'surname'=>'required',
+            'nickName'=>'required',
+            'telNo'=>'required',
             'email'=>'required|unique:users',
             'password'=>'required|min:6',
             'cities_id'=>'required',
             'profilePhoto'=>'required'
+
             ]);
 
         if ($validator->fails()) {
@@ -42,10 +45,17 @@ class RegisterController extends Controller
         $users=new UserModel();
         $users->name=$request->name;
         $users->surname=$request->surname;
+        $users->nickName=$request->nickName;
+        $users->telNo=$request->telNo;
         $users->email=$request->email;
         $users->password = Hash::make($request->password);
         $users->cities_id=$request->cities_id;
         $users->profilePhoto=$request->profilePhoto;
+        if ($request->hasFile('profilePhoto')) {
+            $file = $request->file('profilePhoto');
+            $file->move(public_path() . '/profilePhoto/profilePhoto', $file->getClientOriginalName());
+            $users->profilePhoto = $file->getClientOriginalName();
+        }
         $users->save();
         return Response::json([
             "message"=>"başarılı kayıt",
