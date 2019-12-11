@@ -15,12 +15,12 @@ class CreateFurnitureAdvertsTable extends Migration
     {
         Schema::create('furniture_adverts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('cities_id');
-            $table->string('furniture_name');
+            $table->string('product');
+            $table->string('model');
+            $table->string('brand');
+            $table->boolean('status');
             $table->integer('adverts_id');
-            $table->integer('status_id');
-            $table->integer('wages_id');
-            $table->integer('users_id');
+            $table->boolean('isItGuarantee');
             $table->timestamps();
         });
     }
