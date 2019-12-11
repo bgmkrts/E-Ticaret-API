@@ -15,12 +15,25 @@ class CreateHomeAdvertsTable extends Migration
     {
         Schema::create('home_adverts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('cities_id');
-            $table->integer('status_id');
-            $table->string('explanation');
-            $table->integer('wages_id');
-            $table->integer('users_id');
             $table->integer('adverts_id');
+            $table->integer('squareMeters');
+            $table->integer('room_counts_id');
+            $table->integer('buildingAge');
+            $table->boolean('isItBalcony');
+            $table->integer('floorLocation');
+            $table->integer('countFloor');
+            $table->integer('warming_types_id');
+            $table->integer('countBathroom');
+            $table->boolean('isItFurnished');
+            $table->boolean('inTheSites');
+            $table->integer('dues');
+            $table->integer('deposit');
+            $table->integer('facades_id');
+            $table->boolean('isTheElevator');
+            $table->boolean('isTheParking');
+            $table->integer('housing_types_id');
+            $table->string('usingStatus');
+
             $table->timestamps();
         });
     }

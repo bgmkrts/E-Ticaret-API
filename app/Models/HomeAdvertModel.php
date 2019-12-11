@@ -9,26 +9,40 @@ class HomeAdvertModel extends Model
     protected $table="home_adverts";
     public $timestamps=true;
     protected $fillable=[
-        'cities_id',
-        'status_id',
-        'explanation',
-        'wages_id',
-        'users_id',
-        'adverts_id'
+        'adverts_id',
+        'squareMeters',
+        'room_counts_id',
+        'buildingAge',
+        'isItBalcony',
+        'floorLocation',
+        'countFloor',
+        'warming_types_id',
+        'countBathroom',
+        'isItFurnished',
+        'inTheSites',
+        'dues',
+        'deposit',
+        'facades_id',
+        'isTheElevator',
+        'isTheParking',
+        'housing_types_id',
+        'usingStatus'
     ];
-    public function User(){
-        return $this->belongsTo(UserModel::class,'users_id','id');
+
+    public function Facade(){
+        return $this->belongsTo(FacadeModel::class,'facades_id','id');
     }
-    public function Cities(){
-        return $this->hasMany(CityModel::class,'id','cities_id');
+    public function RoomCount(){
+        return $this->belongsTo(RoomCountModel::class,'room_counts_id','id');
     }
-    public function Statu(){
-        return $this->belongsTo(StatuModel::class,'status_id','id');
+    public function WarmingType(){
+        return $this->belongsTo(WarmingTypeModel::class,'warming_types_id','id');
     }
-    public function Wage(){
-        return $this->belongsTo(WageModel::class,'wages_id','id');
+    public function HousingType(){
+        return $this->belongsTo(HousingTypeModel::class,'housing_types_id','id');
     }
     public function Advert(){
         return $this->belongsTo(AdvertModel::class,'adverts_id','id');
     }
+
 }
