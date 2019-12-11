@@ -15,8 +15,14 @@ class CreateAdvertsTable extends Migration
     {
         Schema::create('adverts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('advertSubject');
-            $table->boolean('isItSold');
+            $table->string('title');
+            $table->string('contents');
+            $table->integer('price');
+            $table->integer('pictures_id');
+            $table->integer('addresses_id');
+            $table->integer('advertNo');
+            $table->integer('advert_types_id');
+            $table->boolean('isActive');
             $table->timestamps();
         });
     }
