@@ -1,5 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
+
+use App\Models\AdvertModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -9,8 +12,8 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $email=$request->email;
-        $password=$request->password;
+        $email = $request->email;
+        $password = $request->password;
         $user = UserModel::where("email", $email)->first();
 
         if (isset($user)) {
@@ -25,19 +28,22 @@ class LoginController extends Controller
                     "result" => "errors"
                 ]);
             }
-        }
-        else {
+        } else {
             return Response::json([
                 "result" => "error"
             ]);
         }
     }
-        public function userShow()
-        {
-            $user = auth('api')->user();
-            return $user;
-        }
 
+    public function userShow()
+    {
+         $user = auth('api')->user();
+         $adverts=UserModel::with('Advert.AdvertType','Advert.Address','Advert.Picture','Advert')->find($user->id);
+        return \response()->json([
+            "user" => $user,
+            "adverts" => $adverts
+        ]);
+    }
 
 
 }

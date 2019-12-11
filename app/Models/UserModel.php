@@ -14,12 +14,17 @@ class UserModel extends Model
     protected $fillable=[
         'name',
         'surname',
+        'nickName',
         'email',
         'password',
         'cities_id',
-        'profilePhoto'
+        'profilePhoto',
+        'telNo',
     ];
     public function City(){
-        return $this->belongsTo('App\Models\CityModel','cities_id','id');
+        return $this->belongsTo(CityModel::class,'cities_id','id');
+    }
+    public function Advert(){
+        return $this->hasMany(AdvertModel::class,'users_id','id');
     }
 }
